@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
                         let sb = UIStoryboard(name: "Main", bundle: nil)
                         let calculatorVC = sb.instantiateViewController(withIdentifier: "calculatorVC")
                         
-                        let customerData = ElectricityBill(name: "\(firstName) \(lastName)", accountNumber: accountNumber, meterNumber: meterNumber, monthlyUsage: 750, pricePlan: 0, offPeak: 65, midPeak: 17, onPeak: 18, oespCredit: 0, contractRate: 8.9, totalBillPrice: 0)
+                        let customerData = ElectricityBill(name: "\(firstName) \(lastName)", accountNumber: accountNumber, meterNumber: meterNumber, monthlyUsage: 750, pricePlan: 0, offPeak: 65, midPeak: 17, onPeak: 18, oespCredit: 0, contractRate: 0, totalBillPrice: 0)
                         let appDelegate = UIApplication.shared.delegate as! AppDelegate
                         appDelegate.setCurrentCustomerData(customerData: customerData)
                         

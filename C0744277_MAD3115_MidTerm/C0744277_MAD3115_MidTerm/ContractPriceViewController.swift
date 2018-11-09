@@ -1,5 +1,5 @@
 //
-//  TimeOfUseViewController.swift
+//  ContractPriceViewController.swift
 //  C0744277_MAD3115_MidTerm
 //
 //  Created by Giselle Tavares on 09/11/18.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class TimeOfUseViewController: UIViewController {
+class ContractPriceViewController: UIViewController {
     
     @IBOutlet weak var lblAccountNumber: UILabel!
     @IBOutlet weak var lblMeterNumber: UILabel!
-    @IBOutlet weak var lblOffPeakValue: UILabel!
-    @IBOutlet weak var lblMidPeakValue: UILabel!
-    @IBOutlet weak var lblOnPeakValue: UILabel!
+    @IBOutlet weak var lblKwhPeak: UILabel!
+    @IBOutlet weak var lblKwhPeakValue: UILabel!
+    @IBOutlet weak var lblGlobalValue: UILabel!
     @IBOutlet weak var lblDeliveryValue: UILabel!
     @IBOutlet weak var lblChargesValue: UILabel!
     @IBOutlet weak var lblTotalChargesValue: UILabel!
@@ -23,42 +23,36 @@ class TimeOfUseViewController: UIViewController {
     @IBOutlet weak var lblRebateValue: UILabel!
     @IBOutlet weak var lblTotalAmountValue: UILabel!
     
-    @IBOutlet weak var btnRetailContract: UIButton!
-    
     let current = UIApplication.shared.delegate as! AppDelegate
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.title = "Time of Use"
+
+        navigationItem.title = "Retail Contract Price"
         
         // header
         lblAccountNumber.text = "\(current.customerData.accountNumber ?? "")"
         lblMeterNumber.text = "\(current.customerData.meterNumber ?? "")"
         
-        // Peaks
-        let monthlyUsage = current.customerData.monthlyUsage
-        let offPeak = current.customerData.offPeak
-        let midPeak = current.customerData.midPeak
-        let onPeak = current.customerData.onPeak
+        // Calcs
+        let monthlyUsage = current.customerData.monthlyUsage!
+        let contractRate = current.customerData.contractRate!
         let oespCredit = current.customerData.oespCredit
         
-        let valueOffPeak = calculatePeak(monthlyUsage: monthlyUsage!, peakPercent: offPeak!, ratePeak: 6.5)
-        let valueMidPeak = calculatePeak(monthlyUsage: monthlyUsage!, peakPercent: midPeak!, ratePeak: 9.4)
-        let valueOnPeak = calculatePeak(monthlyUsage: monthlyUsage!, peakPercent: onPeak!, ratePeak: 13.2)
-        let totalPeaks = valueOffPeak + valueMidPeak + valueOnPeak
+        lblKwhPeak.text = "\(monthlyUsage) kWh @ \(contractRate) ¢/kWh"
+        let totalRetailContractRate = (monthlyUsage * contractRate) / 100
+        lblKwhPeakValue.text = String(format: "%.2f", totalRetailContractRate)
         
-        lblOffPeakValue.text = String(format: "%.2f", valueOffPeak)
-        lblMidPeakValue.text = String(format: "%.2f", valueMidPeak)
-        lblOnPeakValue.text = String(format: "%.2f", valueOnPeak)
+        let globalAdjustment = totalRetailContractRate * 0.2 // 20%
+        lblGlobalValue.text = String(format: "%.2f", globalAdjustment)
         
-        let deliveryCharge = totalPeaks * 0.3 // 30%
+        let deliveryCharge = totalRetailContractRate * 0.3 // 30%
         lblDeliveryValue.text = String(format: "%.2f", deliveryCharge)
         
-        let regulatoryCharge = totalPeaks * 0.032 // 3.2%
+        let regulatoryCharge = totalRetailContractRate * 0.032 // 3.2%
         lblChargesValue.text = String(format: "%.2f", regulatoryCharge)
         
-        var totalElectricityCharge = totalPeaks + deliveryCharge + regulatoryCharge
+        var totalElectricityCharge = totalRetailContractRate + deliveryCharge + regulatoryCharge
         lblTotalChargesValue.text = "$\(String(format: "%.2f", (totalElectricityCharge)))"
         
         if oespCredit! > 0 {
@@ -68,7 +62,7 @@ class TimeOfUseViewController: UIViewController {
             lblOespValue.text = "$\(String(format: "%.2f", (oespCredit!)))"
         }
         
-        let totalHST = totalElectricityCharge * 0.13 //13%
+        let totalHST = totalElectricityCharge * 0.13 // 13%
         lblHSTValue.text = String(format: "%.2f", (totalHST))
         
         let totalProvincialRebate = (totalElectricityCharge + totalHST) * 0.08 //8%
@@ -76,17 +70,17 @@ class TimeOfUseViewController: UIViewController {
         
         let totalAmount = (totalElectricityCharge + totalHST) - totalProvincialRebate
         lblTotalAmountValue.text = "$\(String(format: "%.2f", (totalAmount)))"
-        
-        if current.customerData.contractRate == 0 {
-            btnRetailContract.isHidden = true
-        }
-        
     }
     
-    func calculatePeak(monthlyUsage: Double, peakPercent: Double, ratePeak: Double) -> Double {
-        
-        var peak = ((monthlyUsage * (peakPercent/100)) * ratePeak) / 100
-        return peak
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
     }
+    */
 
 }

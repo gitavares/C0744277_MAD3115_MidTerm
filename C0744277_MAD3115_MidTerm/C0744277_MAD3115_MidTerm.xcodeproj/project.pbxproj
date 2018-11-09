@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3C11F197219570130026BAA4 /* TimeOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C11F196219570130026BAA4 /* TimeOfUseViewController.swift */; };
 		3C11F199219570B30026BAA4 /* TieredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C11F198219570B30026BAA4 /* TieredViewController.swift */; };
+		3C11F19B2195DC610026BAA4 /* ContractPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C11F19A2195DC610026BAA4 /* ContractPriceViewController.swift */; };
 		3C87E1BD2194A6B500BE5000 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C87E1BC2194A6B500BE5000 /* AppDelegate.swift */; };
 		3C87E1BF2194A6B500BE5000 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C87E1BE2194A6B500BE5000 /* LoginViewController.swift */; };
 		3C87E1C22194A6B500BE5000 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C87E1C02194A6B500BE5000 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		3C11F196219570130026BAA4 /* TimeOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfUseViewController.swift; sourceTree = "<group>"; };
 		3C11F198219570B30026BAA4 /* TieredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TieredViewController.swift; sourceTree = "<group>"; };
+		3C11F19A2195DC610026BAA4 /* ContractPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractPriceViewController.swift; sourceTree = "<group>"; };
 		3C87E1B92194A6B500BE5000 /* C0744277_MAD3115_MidTerm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = C0744277_MAD3115_MidTerm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C87E1BC2194A6B500BE5000 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C87E1BE2194A6B500BE5000 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				3C87E1DC21950CE800BE5000 /* ElectricityBill.swift */,
 				3C11F196219570130026BAA4 /* TimeOfUseViewController.swift */,
 				3C11F198219570B30026BAA4 /* TieredViewController.swift */,
+				3C11F19A2195DC610026BAA4 /* ContractPriceViewController.swift */,
 			);
 			path = C0744277_MAD3115_MidTerm;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 				3C87E1BF2194A6B500BE5000 /* LoginViewController.swift in Sources */,
 				3C11F199219570B30026BAA4 /* TieredViewController.swift in Sources */,
 				3C87E1DD21950CE800BE5000 /* ElectricityBill.swift in Sources */,
+				3C11F19B2195DC610026BAA4 /* ContractPriceViewController.swift in Sources */,
 				3C87E1D92194B36B00BE5000 /* LauncherViewController.swift in Sources */,
 				3C87E1DB2194BF6600BE5000 /* CalculatorViewController.swift in Sources */,
 				3C87E1BD2194A6B500BE5000 /* AppDelegate.swift in Sources */,

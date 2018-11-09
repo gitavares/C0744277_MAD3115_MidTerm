@@ -56,26 +56,25 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func btnCalculate(_ sender: UIButton) {
         let pricePlan = segPricingPlan.selectedSegmentIndex
-        guard let monthlyUsage = Double(txtMonthlyUsage.text!) else { return }
-        guard let offPeak = Double(txtTmuOffPeak.text!) else { return }
-        guard let midPeak = Double(txtTmuMidPeak.text!) else { return }
-        guard let onPeak = Double(txtTmuOnPeak.text!) else { return }
-        guard let oespCredit = Double(txtOespCredit.text!) else { return }
-        guard var contractRate = Double(txtContractRate.text!) else { return }
+        var message = "All fields must be filled and with numbers only"
+        guard let monthlyUsage = Double(txtMonthlyUsage.text!) else { return alertMessage(message: message) }
+        guard let offPeak = Double(txtTmuOffPeak.text!) else { return alertMessage(message: message) }
+        guard let midPeak = Double(txtTmuMidPeak.text!) else { return alertMessage(message: message) }
+        guard let onPeak = Double(txtTmuOnPeak.text!) else { return alertMessage(message: message) }
+        guard let oespCredit = Double(txtOespCredit.text!) else { return alertMessage(message: message) }
+        guard let contractRate = Double(txtContractRate.text!) else { return alertMessage(message: message) }
         
         if pricePlan == 0 {
             let totalPeak = offPeak + midPeak + onPeak
             if totalPeak != 100 {
-                let alert = UIAlertController(title: "Error", message: "The total Peak (Off, Mid and On) must be 100%", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                message = "The total Peak (Off, Mid and On) must be 100%"
+                alertMessage(message: message)
             }
-        } else {
-            if monthlyUsage <= 600 {
-                contractRate = 7.7
-            } else {
-                contractRate = 8.9
-            }
+        }
+        
+        if monthlyUsage < 0 || oespCredit < 0 || contractRate < 0 {
+            message = "The values must be $0 or more"
+            alertMessage(message: message)
         }
         
         current.setMonthlyUsage(monthlyUsage: monthlyUsage)
@@ -87,6 +86,7 @@ class CalculatorViewController: UIViewController {
         current.setContractRate(contractRate: contractRate)
         
         let sb = UIStoryboard(name: "Main", bundle: nil)
+        
         if pricePlan == 0 {
             let timeOfUseVC = sb.instantiateViewController(withIdentifier: "timeOfUseVC")
             self.navigationController?.pushViewController(timeOfUseVC, animated: true)
@@ -95,6 +95,12 @@ class CalculatorViewController: UIViewController {
             self.navigationController?.pushViewController(tieredVC, animated: true)
         }
         
+    }
+    
+    func alertMessage(message: String){
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func segPricingAction(_ sender: UISegmentedControl) {
