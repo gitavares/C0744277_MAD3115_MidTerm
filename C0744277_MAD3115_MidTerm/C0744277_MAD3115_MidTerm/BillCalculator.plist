@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Bill</key>
+	<array>
+		<dict/>
+	</array>
+	<key>User</key>
+	<array>
+		<dict>
+			<key>id</key>
+			<integer>1</integer>
+			<key>accountNumber</key>
+			<string>273 939 889 8760</string>
+			<key>meterNumber</key>
+			<string>8657867</string>
+			<key>firstName</key>
+			<string>Giselle</string>
+			<key>lastName</key>
+			<string>Tavares</string>
+			<key>username</key>
+			<string>gitavares</string>
+			<key>password</key>
+			<string>123456</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>2</integer>
+			<key>accountNumber</key>
+			<string>263 444 111 8792</string>
+			<key>meterNumber</key>
+			<string>8235567</string>
+			<key>firstName</key>
+			<string>Peri</string>
+			<key>lastName</key>
+			<string>Reis</string>
+			<key>username</key>
+			<string>peri_reis</string>
+			<key>password</key>
+			<string>123456</string>
+		</dict>
+	</array>
+</dict>
+</plist>
