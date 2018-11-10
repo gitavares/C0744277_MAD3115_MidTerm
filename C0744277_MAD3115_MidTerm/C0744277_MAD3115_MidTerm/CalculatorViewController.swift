@@ -27,6 +27,8 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var lblTmuPerc3: UILabel!
     @IBOutlet weak var txtOespCredit: UITextField!
     @IBOutlet weak var txtContractRate: UITextField!
+    @IBOutlet weak var viewPeaks: UIView!
+    
     
     let current = UIApplication.shared.delegate as! AppDelegate
     
@@ -105,29 +107,9 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func segPricingAction(_ sender: UISegmentedControl) {
         if segPricingPlan.selectedSegmentIndex == 1 {
-            lblTmuText.isHidden = true
-            lblTmuOffPeak.isHidden = true
-            lblTmuMidPeak.isHidden = true
-            lblTmuOnPeak.isHidden = true
-            txtTmuOffPeak.isHidden = true
-            txtTmuMidPeak.isHidden = true
-            txtTmuOnPeak.isHidden = true
-            lblTmuPerc1.isHidden = true
-            lblTmuPerc2.isHidden = true
-            lblTmuPerc3.isHidden = true
-            txtContractRate.isEnabled = true
+            viewPeaks.isHidden = true
         } else {
-            lblTmuText.isHidden = false
-            lblTmuOffPeak.isHidden = false
-            lblTmuMidPeak.isHidden = false
-            lblTmuOnPeak.isHidden = false
-            txtTmuOffPeak.isHidden = false
-            txtTmuMidPeak.isHidden = false
-            txtTmuOnPeak.isHidden = false
-            lblTmuPerc1.isHidden = false
-            lblTmuPerc2.isHidden = false
-            lblTmuPerc3.isHidden = false
-            txtContractRate.isEnabled = false
+            viewPeaks.isHidden = false
         }
     }
     
